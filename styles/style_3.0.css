@@ -1,0 +1,508 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+*, *::after, *::before {
+box-sizing:border-box;  
+}
+
+@font-face {
+    font-family: "dunkin sans", "arial";
+    src: url(./fonts/dunkin_sans.otf);
+    font-weight: 400;
+}
+
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+    --text-color:#111;
+    --nav-text-color: #512d0e;
+    --white-background-color:#ffffff;
+    --grey-brackground-color: #f5f5f5;
+    --pink-color: #ec4390;
+    --pink-button-color: #ec4dac;
+    --orange-color: #ef6c38;
+    --darkorange-color: #ea4933;
+    --grey-brackground-color: #f5f5f5;
+    --grey-text-color: #adadad;
+    --blue-background-color: #99d6ea;
+    --coffee-background-color: #ddbd8e;
+    --darkcoffee-backgroun-color: #d6b687;
+    --state-color: lime; 
+
+    --font-size-h2: 4em;
+    --font-size-h3: 2em;
+    --font-size-p: 1em;
+
+
+    color-scheme: light dark; 
+	--text-color: light-dark(Black, white); 
+	--white-background-color: light-dark(white, Black); 
+  
+
+   } 
+
+   html:has([value="light"]:checked) { 
+    color-scheme: light; 
+   } 
+
+   html:has([value="dark"]:checked) { 
+    color-scheme: dark; 
+   }
+
+   html { 
+    color: var(--text-color); 
+    background-color: var(--white-background-color); 
+}
+
+
+/****************************************/
+/*              STYLING                 */
+/****************************************/
+
+/****************/
+/* algemeen */
+/****************/
+
+* {
+    font-family: "dunkin sans", "arial";
+    text-transform: uppercase;
+    margin: 0;
+}
+
+main{
+    padding: 1.5em;
+    background-color: var(--pink-button-color);
+}
+
+header{
+    padding: 1.5em;
+}
+
+h1{
+    color: var(--orange-color);
+}
+
+h2{
+    font-family: "dunkin sans";
+    display: grid;
+    
+    color: var(--pink-color);	
+}
+
+h2 em{
+    font-style: normal;
+
+    color: var(--orange-color);	
+}
+
+p{
+    color: var(--grey-text-color);
+}
+
+
+/*************************/
+/* HEADER*/
+/*************************/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-wrap: wrap; */
+}
+
+
+header button {
+    padding:.5em;
+    width: 4em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+
+    border: none;
+    border-radius: 1em;
+}
+
+
+header button img {
+    height:1em;
+}
+
+header button:nth-of-type(2) {
+    order: -1;
+}
+
+header > a:last-of-type{
+	padding: 1em;
+	margin: .5em;
+	display: flex;
+	flex-direction:column;
+
+	font-weight: bold;
+
+	background-color: var(--orange-color);
+	color: var(--white-background-color);
+
+	border-radius: 2em;
+}
+
+header > a:last-of-type:hover{
+	transform: scale(1.1);
+}
+
+header > a:last-of-type:focus{
+  outline: none;
+  box-shadow: 0 0 0 .25em var(--state-color);
+}
+
+@media (width < 48em) {
+
+	header > a:last-of-type {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 1em;
+
+		position: absolute;
+		left: 9999em;
+		
+    	background-color: var(--orange-color);
+    	justify-content: center;
+    	
+   		bottom: 0;
+    	left: 0;
+    	right: 0;
+    	position: fixed;
+	}
+
+}
+
+
+/*************************/
+/* NAVIGATIE*/
+/*************************/
+
+
+nav{
+    font-family: "dunkin sans", "arial";
+    
+    padding: 1em;
+
+    display: grid;
+    align-content:start;
+    gap: 1em;
+
+    position:fixed;
+    left: 0;
+    right:0;
+    top:0;
+    bottom:0;
+    /* inset: 0; */
+
+    translate: -100%;
+    transition: 1s;
+
+    background-color: var(--white-background-color);
+
+}
+
+nav.toonMenu{
+    translate: 0%;
+}
+
+/* linkjes in de navigatie>menu */
+
+nav li {
+    list-style-type: none;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-direction: column;
+    column-gap: .5em;
+
+    text-align: center;
+    
+    font-family: "dunkin sans", "arial";
+    font-size: x-large;
+    font-weight: bold;
+
+    color: var(--nav-text-color);
+    text-decoration: none;
+}
+
+nav  a:focus{
+	outline: none;
+	box-shadow: 0 0 0 .25em var(--state-color);
+}
+
+
+
+
+nav li:last-of-type {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+nav ul li:last-of-type button img{
+    padding: 1em;
+    width: 4em;
+    height: 4em;
+
+    background-color: var(--nav-text-color);
+    border-radius: 2em;
+    border: none;
+}
+
+nav li button {
+    
+    padding:.5em;
+    width: 4em;
+
+    border: none;
+    border-radius: 1em;
+}
+
+nav button img {
+    height: .5em;
+}
+
+@media (min-width:48em) {
+header > button {
+    position: absolute;
+    left: -9999em;
+}
+ 
+nav {
+    position: static;
+    translate: unset;
+    padding: 0;
+    background: none;
+}
+    
+nav button {
+    position: absolute;
+    left: -9999em;
+}
+
+    
+nav ul {
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;  
+}
+    
+nav a {
+    border: none;
+    flex-direction: column;
+}
+
+    
+header > a:last-of-type {
+    flex-direction: column;
+}
+}
+
+/****************/
+/* STYLING BESTEL */
+/****************/
+
+main section {
+	
+	width: auto;
+	padding: 1em;
+	display: flex;
+    flex-direction: column;
+	
+	border-radius: 2em;
+
+    align-items: center;
+	justify-content: space-between;
+	
+}
+
+main section h2{
+	margin-top: .5em;
+
+	color: #ffffff;
+	font-size: var(--font-size-h2);
+	align-items: center;
+	justify-content: center;
+}
+
+main section p{
+	color: #ffffff;
+	padding: 1em;
+
+	text-align:left;
+
+}
+
+main section button{
+
+	padding: 1em;
+    margin: 1em;
+
+    font-weight: bold;
+
+	color: var(--pink-color);
+	background-color: var(--white-background-color);
+
+	border-radius: 2em;	
+    border: none;
+	
+}
+
+main section:nth-of-type(2) button:hover{
+	transform: scale(1.1);
+}
+
+main section:nth-of-type(2) button:focus {
+  outline: none;
+  box-shadow: 0 0 0 .25em var(--state-color);
+}
+
+  
+button [aria-label="opZnKop"]:hover main section button {
+    animation-name:opZnKop-animatie;
+    animation-duration:1s;
+  }
+
+  @keyframes opZnKop-animatie {
+    0% {
+      rotate:0deg;
+    }
+    100% {
+      rotate:180deg;
+    }
+  }
+
+/******************/
+/* STYLING FOOTER */
+/******************/
+
+footer{
+    padding: 7em 2em 2em 2em;
+    margin-top: 5em;
+    position: relative;
+    background-color: var(--darkorange-color);
+}
+
+footer section:nth-of-type(1) img{
+    position: absolute;
+    
+    height: 40%;
+
+    top: 0;
+    right: 50%;
+    transform: translate(50%, -50%) rotate(-20deg); 
+
+    padding:.25em;
+    background-color: var(--grey-brackground-color);
+    box-shadow:.25em .25em .25em var(--text-color); 
+
+    border-radius: 8em;
+    border: none;
+}
+
+
+footer section:nth-of-type(2) a{
+    padding: 1em;
+    margin: .5em;
+    display: flex;
+
+    text-align: center;
+    text-decoration: none;
+
+    align-items: center;
+    justify-content: center;
+    
+    color: var(--white-background-color);
+    background-color: var(--orange-color);
+    border: none;
+    border-radius: 2em;
+}
+
+footer section:nth-of-type(3) {
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+
+footer section:nth-of-type(3) img{
+
+    padding: 1em;
+    width: 4em;
+    height: 4em;
+
+    background-color: var(--white-background-color);
+    border-radius: 2em;
+    border: none;
+}
+
+
+footer section:nth-of-type(4) {
+    display: flex;
+    
+    background-color: var(--grey-brackground-color);
+
+}
+footer section:nth-of-type(4) a{
+    
+    padding-left: .25em;
+    padding-right: .25em;
+    
+    text-decoration: none;
+    color: var(--grey-text-color);
+    background-color: var(--grey-brackground-color);
+}
+
+footer section:nth-of-type(4) a + a{
+    border-left: solid 1px var(--text-color);
+}
+
+footer  a:focus{
+	outline: none;
+	box-shadow: 0 0 0 .25em var(--state-color);
+}
+
+@media (width > 48em) {
+
+footer{
+    padding: 1em ;
+    display: grid;
+    gap: 1em;
+    
+    /* grid-template-columns: repeat(4), (1fr); */
+}
+
+
+footer section:nth-of-type(2) {
+    display: flex;
+    justify-content: center;
+
+}
+
+footer section:nth-of-type(2) a{
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+}
+
